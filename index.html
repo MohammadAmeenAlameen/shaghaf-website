@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شغف | Shaghaf - معرض أعمالك ومواهبك في مكان واحد</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-orange: #FF6B35;
+            --dark-navy: #0F172A;
+            --card-surface: #1E293B;
+            --text-primary: #FFFFFF;
+            --text-secondary: #94A3B8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-navy);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* الهيدر */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            background: var(--text-primary);
+            border-radius: 12px;
+            padding: 4px;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .btn-small {
+            background-color: var(--primary-orange);
+            color: var(--text-primary) !important;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 700 !important;
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            padding: 80px 0 60px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--card-surface);
+            color: var(--primary-orange);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-orange);
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            max-width: 540px;
+        }
+
+        /* منطقة التحميل */
+        .download-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--primary-orange);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 16px 36px;
+            border-radius: 14px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.45);
+        }
+
+        .app-meta {
+            display: flex;
+            gap: 15px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .app-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* إطار الهاتف */
+        .hero-mockup {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .phone-frame {
+            width: 290px;
+            border-radius: 38px;
+            border: 10px solid var(--card-surface);
+            background-color: var(--dark-navy);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 107, 53, 0.2);
+            overflow: hidden;
+        }
+
+        .phone-frame img {
+            width: 100%;
+            display: block;
+        }
+
+        /* قسم المميزات */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background-color: var(--card-surface);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(148, 163, 184, 0.08);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-orange);
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            background-color: rgba(255, 107, 53, 0.12);
+            color: var(--primary-orange);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* قسم لقطات الشاشة */
+        .screenshots {
+            padding: 80px 20px;
+            background-color: rgba(30, 41, 59, 0.35);
+            border-radius: 30px;
+            margin: 20px auto;
+        }
+
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
+            justify-items: center;
+        }
+
+        .screen-item {
+            text-align: center;
+        }
+
+        .screen-item .phone-frame {
+            width: 260px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .screen-item:hover .phone-frame {
+            transform: scale(1.03);
+        }
+
+        .screen-item h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .screen-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* قسم الدعوة للتحميل والدعم */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-box {
+            background-color: var(--card-surface);
+            padding: 50px 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 107, 53, 0.25);
+        }
+
+        .cta-box h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--text-secondary);
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
+        }
+
+        /* الفوتر */
+        footer {
+            padding: 35px 0;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* التجاوب مع الجوال */
+        @media (max-width: 850px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 40px;
+            }
+
+            .hero p {
+                margin: 0 auto 30px;
+            }
+
+            .download-box {
+                align-items: center;
+            }
+
+            .app-meta {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav-content">
+            <a href="#" class="brand">
+                <img src="logo.png" alt="شعار تطبيق شغف">
+                <span class="brand-name">شغف | Shaghaf</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#features">المميزات</a>
+                <a href="#screenshots">واجهة التطبيق</a>
+                <a href="#support">الدعم الفني</a>
+                <a href="#download" class="btn-small">تحميل التطبيق</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="container hero" id="download">
+        <div class="hero-content">
+            <span class="badge">تطبيق الفريلانسرز والمبدعين الأول 🚀</span>
+            <h1>اكتشف <span>الشغف..</span> وحوّل مهاراتك إلى فرص حقيقية في مكان واحد</h1>
+            <p>
+                منصة متكاملة تجمع المستقلين وأصحاب المهارات لعرض مشاريعهم وأعمالهم السابقة باحترافية، وتتيح لأصحاب
+                الأعمال الوصول إلى الشخص المناسب والتواصل معه مباشرة بكل سهولة.
+            </p>
+
+            <div class="download-box">
+                <a href="https://github.com/MohammadAmeenAlameen/shaghaf-app/releases/download/v1.0.0/Shaghaf.apk"
+                    class="btn-download" download>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    تحميل تطبيق شغف (APK)
+                </a>
+                <div class="app-meta">
+                    <span>📱 نظام Android</span>
+                    <span>•</span>
+                    <span>📦 الحجم: 24.5 MB</span>
+                    <span>•</span>
+                    <span>🏷️ الإصدار: v1.0.0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-mockup">
+            <div class="phone-frame">
+                <img src="screen1.png" alt="واجهة تطبيق شغف الرئيسية">
+            </div>
+        </div>
+    </section>
+
+    <section class="container features" id="features">
+        <div class="section-title">
+            <h2>لماذا تختار تطبيق شغف؟</h2>
+            <p>كل ما تحتاجه لعرض إبداعك أو العثور على مستقل محترف في تجربة واحدة</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3>معرض أعمال متكامل</h3>
+                <p>أنشئ ملفك الشخصي في دقائق واجمع كل مشاريعك وروابطك في مكان واحد يعكس هويتك المهنية.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>فلترة ذكية وسريعة</h3>
+                <p>تصفح المستقلين حسب التخصص (مبرمج، مصمم، كاتب، مسوق) للوصول إلى الشخص المناسب فوراً.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>تواصل مباشر وبدون تعقيد</h3>
+                <p>اطلع على أعمال المستقل السابقة وتواصل معه مباشرة عبر حساباته أو رقم هاتفه لإنجاز خدمتك.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>مجاني وسهل الاستخدام</h3>
+                <p>واجهة عصرية داكنة مريحة للعين وسريعة الاستجابة، متاحة مجاناً بالكامل لجميع المستخدمين.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container screenshots" id="screenshots">
+        <div class="section-title">
+            <h2>جولة داخل التطبيق</h2>
+            <p>تصميم عصري وبسيط مصمم ليبرز أعمالك بأفضل صورة ممكنة</p>
+        </div>
+
+        <div class="screens-grid">
+            <div class="screen-item">
+                <div class="phone-frame">
+                    <img src="screen1.png" alt="استكشاف المستقلين">
+                </div>
+                <h4>استكشف المواهب</h4>
+                <p>تصفح الفريلانسرز وفلترهم حسب التخصص</p>
+            </div>
+
+            <div class="screen-item">
+                <div class="phone-frame">
+                    <img src="screen3.png" alt="معرض الأعمال والملف الشخصي">
+                </div>
+                <h4>معرض أعمال احترافي</h4>
+                <p>اعرض نبذتك التعريفية ومشاريعك بروابط مباشرة</p>
+            </div>
+
+            <div class="screen-item">
+                <div class="phone-frame">
+                    <img src="screen2.png" alt="تعديل البيانات الشخصية">
+                </div>
+                <h4>تحكم كامل بملفك</h4>
+                <p>حدّث بياناتك وروابط تواصلك بكل سهولة</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container cta-section" id="support">
+        <div class="cta-box">
+            <h2>جاهز لعرض شغفك للعالم؟</h2>
+            <p>حمّل التطبيق الآن مجاناً وابدأ ببناء معرض أعمالك، أو تواصل معنا عبر واتساب لأي استفسار أو دعم فني.</p>
+
+            <div class="cta-buttons">
+                <a href="https://github.com/MohammadAmeenAlameen/shaghaf-app/releases/download/v1.0.0/Shaghaf.apk"
+                    class="btn-download" download>
+                    تحميل التطبيق الآن (24.5 MB)
+                </a>
+                <a href="https://wa.me/963994781331" target="_blank" class="btn-whatsapp">
+                    💬 تواصل مع الدعم عبر واتساب
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>جميع الحقوق محفوظة © 2026 تطبيق شغف | Shaghaf</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
